@@ -12,6 +12,7 @@ class Matrix {
     int getCols();
     float get(int row, int col);
     void set(int row, int col, float value);
+    void fill(float value);
     Matrix add(Matrix guestMatrix);
     Matrix subtract(Matrix guestMatrix);
     Matrix multiply(Matrix guestMatrix);
