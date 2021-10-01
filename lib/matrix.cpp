@@ -1,9 +1,12 @@
 #include "matrix.h"
+#include "tools.h"
 #include <vector>
 #include <iostream>
 
 // constructor for matrix, rows↓, cols→
 Matrix::Matrix(int rows, int cols) {
+  // seed random
+  seedRandom();
   // set values
   this->rows = rows;
   this->cols = cols;
@@ -46,6 +49,15 @@ void Matrix::fill(float value) {
   }
 }
 
+// fill matrix with random values in a range
+void Matrix::fillRandom(int min, int max) {
+  for (int row = 0; row < this->rows; row++) {
+    for (int col = 0; col < this->cols; col++) {
+      this->matrix[row][col] = randomInt(min, max);
+    }
+  }
+}
+
 // add the guestMatrix to the current matrix
 Matrix Matrix::add(Matrix guestMatrix) {
   Matrix outputMatrix(this->rows, this->cols);
@@ -68,11 +80,46 @@ Matrix Matrix::subtract(Matrix guestMatrix) {
   return outputMatrix;
 }
 
+// multiply the current matrix by the guestMatrix
+Matrix Matrix::multiply(Matrix guestMatrix) {
+  Matrix outputMatrix(this->rows, guestMatrix.getCols());
+  if (this->cols!=guestMatrix.getRows()) {
+    std::cout << "WARNING: this->cols!=passedMatrix->rows" << std::endl;
+    return outputMatrix;
+  }
+  // for every col→ in guestMatrix
+  for (int c2 = 0; c2 < guestMatrix.getCols(); c2++) {
+    // for every row↓ in this matrix
+    for (int r1 = 0; r1 < this->rows; r1++) {
+      float sum = 0;
+      // for every col→ in this matrix
+      for (int c1 = 0; c1 < this->cols; c1++) {
+        float a = this->matrix[r1][c1];
+        float b = guestMatrix.get(c1+1, c2+1);
+        sum += a*b;
+      }
+      outputMatrix.set(r1+1, c2+1, sum);
+    }
+  }
+  return outputMatrix;
+}
+
+// multiply the current matrix by a value
+Matrix Matrix::multiply(float value) {
+  Matrix outputMatrix(this->rows, this->cols);
+  for (int row = 0; row < this->rows; row++) {
+    for (int col = 0; col < this->cols; col++) {
+      outputMatrix.set(row+1, col+1, this->matrix[row][col]*value);
+    }
+  }
+  return outputMatrix;
+}
+
 // print out the matrix
 void Matrix::print() {
   for (int row = 0; row < this->rows; row++) {
     for (int col = 0; col < this->cols; col++) {
-      std::cout << this->matrix[row][col];
+      std::cout << this->matrix[row][col] << "\t";
     }
     std::cout << std::endl;
   }
