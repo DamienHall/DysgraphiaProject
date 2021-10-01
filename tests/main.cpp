@@ -10,9 +10,9 @@ int main() {
   int neurons = 3;
 
 
-  Matrix mA(neurons,inputs);
-  Matrix mB(inputs,1);
-  Matrix mC(inputs,1);
+  Matrix mA(neurons, inputs);
+  Matrix mB(inputs, 1);
+  Matrix mC(inputs, 1);
 
   mA.fillRandom(1,4);
   mB.fillRandom(1,5);

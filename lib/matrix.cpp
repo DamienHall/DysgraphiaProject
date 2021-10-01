@@ -61,6 +61,9 @@ void Matrix::fillRandom(int min, int max) {
 // add the guestMatrix to the current matrix
 Matrix Matrix::add(Matrix guestMatrix) {
   Matrix outputMatrix(this->rows, this->cols);
+  if (this->rows!=guestMatrix.getRows()&&this->cols!=guestMatrix.getCols()) {
+    return outputMatrix;
+  }
   for (int row = 0; row < this->rows; row++) {
     for (int col = 0; col < this->cols; col++) {
       outputMatrix.set(row+1, col+1, this->matrix[row][col]+guestMatrix.get(row+1,col+1));
@@ -72,6 +75,9 @@ Matrix Matrix::add(Matrix guestMatrix) {
 // subtract the current matrix by the guestMatrix
 Matrix Matrix::subtract(Matrix guestMatrix) {
   Matrix outputMatrix(this->rows, this->cols);
+  if (this->rows!=guestMatrix.getRows()&&this->cols!=guestMatrix.getCols()) {
+    return outputMatrix;
+  }
   for (int row = 0; row < this->rows; row++) {
     for (int col = 0; col < this->cols; col++) {
       outputMatrix.set(row+1, col+1, this->matrix[row][col]-guestMatrix.get(row+1,col+1));
