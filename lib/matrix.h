@@ -1,3 +1,6 @@
+#ifndef MATRIX_H
+#define MATRIX_H
+
 #include <vector>
 #include <string>
 
@@ -7,7 +10,9 @@ class Matrix {
     int cols;
     std::vector<std::vector<float>> matrix;
   public:
+    Matrix();
     Matrix(int rows, int cols);
+    void init(int rows, int cols);
     int getRows();
     int getCols();
     float get(int row, int col);
@@ -21,3 +26,5 @@ class Matrix {
     Matrix abs();
     void print();
 };
+
+#endif

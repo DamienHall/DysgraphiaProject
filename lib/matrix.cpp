@@ -3,14 +3,19 @@
 #include <vector>
 #include <iostream>
 
+// empty constructor to satisfy the c++ gods
+Matrix::Matrix() {}
+
 // constructor for matrix, rows↓, cols→
 Matrix::Matrix(int rows, int cols) {
-  // seed random
+  init(rows, cols);
+}
+
+// class initializer
+void Matrix::init(int rows, int cols) {
   seedRandom();
-  // set values
   this->rows = rows;
   this->cols = cols;
-  // initialize matrix
   this->matrix.resize(rows);
   for (int row = 0; row < rows; row++) {
     this->matrix[row].resize(cols);
