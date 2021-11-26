@@ -17,6 +17,7 @@ class Matrix {
     int getCols();
     float get(int row, int col);
     void set(int row, int col, float value);
+    void set(Matrix guestMatrix);
     void fill(float value);
     void fillRandom(int min, int max);
     Matrix add(Matrix guestMatrix);
@@ -24,6 +25,7 @@ class Matrix {
     Matrix multiply(Matrix guestMatrix);
     Matrix multiply(float value);
     Matrix abs();
+    Matrix sign();
     void print();
 };
 

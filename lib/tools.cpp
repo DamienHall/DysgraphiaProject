@@ -2,6 +2,8 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -16,7 +18,14 @@ double randomDouble(double min, double max) {
 
 void seedRandom() {
     srand(time(NULL));
+}
 
+float relu(float x) {
+  return (abs(x)+x)/2;
+}
+
+float sigmoid(float x) {
+  return round(x/(1+abs(x)));
 }
 
 // debug tools
