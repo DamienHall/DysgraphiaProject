@@ -1,0 +1,17 @@
+@startuml
+class Matrix {
+  -rows: int
+  -cols: int
+  -matrix: vector<vector<float>>
+  +Matrix(): void
+  +getRows(): int
+  +getCols(): int
+  +get(): float
+  +set(): void
+  +add(): Matrix
+  +subtract(): Matrix
+  +multiply(): Matrix
+  +abs(): void
+  +print(): void
+}
+@enduml
