@@ -13,7 +13,6 @@ Matrix::Matrix(int rows, int cols) {
 
 // class initializer
 void Matrix::init(int rows, int cols) {
-  seedRandom();
   this->rows = rows;
   this->cols = cols;
   this->matrix.resize(rows);
@@ -45,6 +44,18 @@ void Matrix::set(int row, int col, float value) {
   this->matrix[row-1][col-1] = value;
 }
 
+<<<<<<< HEAD
+=======
+// set the matrix values to the guest matrix values
+void Matrix::set(Matrix guestMatrix) {
+  for (int row = 0; row < this->rows; row++) {
+    for (int col = 0; col < this->cols; col++) {
+      this->matrix[row][col] = guestMatrix.get(row+1,col+1);
+    }
+  }
+}
+
+>>>>>>> 7260080d0e5effbbafba2212906b721ea3548c92
 // fill the matrix with a specified value
 void Matrix::fill(float value) {
   for (int row = 0; row < this->rows; row++) {
@@ -67,10 +78,18 @@ void Matrix::fillRandom(int min, int max) {
 Matrix Matrix::add(Matrix guestMatrix) {
   Matrix outputMatrix(this->rows, this->cols);
   if (this->rows!=guestMatrix.getRows()&&this->cols!=guestMatrix.getCols()) {
+<<<<<<< HEAD
+=======
+    cout<<"ERR"<<endl;
+>>>>>>> 7260080d0e5effbbafba2212906b721ea3548c92
     return outputMatrix;
   }
   for (int row = 0; row < this->rows; row++) {
     for (int col = 0; col < this->cols; col++) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7260080d0e5effbbafba2212906b721ea3548c92
       outputMatrix.set(row+1, col+1, this->matrix[row][col]+guestMatrix.get(row+1,col+1));
     }
   }
@@ -126,6 +145,20 @@ Matrix Matrix::multiply(float value) {
   return outputMatrix;
 }
 
+<<<<<<< HEAD
+=======
+// sigmoid all of the values in Matrix
+Matrix Matrix::sign() {
+  Matrix outputMatrix(this->rows, this->cols);
+  for (int row = 0; row < this->rows; row++) {
+    for (int col = 0; col < this->cols; col++) {
+      outputMatrix.set(row+1, col+1, sigmoid(this->matrix[row][col]));
+    }
+  }
+  return outputMatrix;
+}
+
+>>>>>>> 7260080d0e5effbbafba2212906b721ea3548c92
 // print out the matrix
 void Matrix::print() {
   for (int row = 0; row < this->rows; row++) {
